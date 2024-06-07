@@ -8,9 +8,6 @@ from pybo import db
 from pybo.forms import UserCreateForm, UserLoginForm, UserSchoolForm, UserMajorForm
 from pybo.models import User, Event
 
-local_date_string = "2024-05-29T12:00:00.000Z"  # 클라이언트로부터 전송된 예시 날짜 문자열
-local_datetime = datetime.fromisoformat(local_date_string)  # 클라이언트의 로컬 시간대로 변환된 datetime 객체
-print(local_datetime)
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
