@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소속 단과대학 선택</title>
+    <style>
+
+        .container {
+            width: auto;
+            height: auto;
+            display: grid;
+            place-items: center;
+        }
+        #main-content {
+        padding: 100px;
+        margin-top: 100px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group select {
+            width: 15%;
+            padding: 10px;
+        }
+        .form-group input[type="submit"] {
+            background: #0779e4;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group input[type="submit"]:hover {
+            background: #025ab1;
+        }
+
+        button-group {
+        outline: none;
+        position: absolute;
+        }
+
+        .btn {
+            background-color: transparent;
+            border: 2px solid #3498db; /* 원하는 색상으로 변경 가능 */
+            color: #0333AF; /* 텍스트 색상 */
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px; /* 선택사항 */
+        }
+
+       .btn-A:hover {
+       background-color: #0779e4;
+       color: white;
+
+    </style>
+</head>
+<body>
+
+    <div class="container" id="main-content">
+        <h1>소속 <span style="color: #0779e4;">단과대학</span>을 선택해주세요.</h1>
+        <form method="POST" action="{{url_for('auth.signup_step2')}}">
+            {{ form.csrf_token}}
+            {% include "errors.html" %}
+            <div class="login-form">
+                {{ form.school(class="form-control") }}
+            </div>
+
+            <div class="button-group">
+            <button type="submit" class="btn btn-primary btn-A"><strong>다음 단계</strong></button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

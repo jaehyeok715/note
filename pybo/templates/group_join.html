@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    {% include "nav.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그룹 참가</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+ <div class="resister-invitation">
+
+    <div class="text-wrapper-1">공유받은 코드가 있나요?</div>
+
+        <p class="text-wrapper-2">공유 받은 코드가 없다면, '그룹 코드 생성' 탭에서 그룹을 생성해 보세요!</p>
+
+        <p class="text-wrapper-3">코드를 공유 받았다면, 아래 창에 코드를 등록해 주세요.</p>
+
+ </div>
+
+<div class="resister-invitation2">
+    <form id="join-group-form">
+        <label for="group_code"
+               style="
+               position: absolute;
+               top: 300px;
+               width: 400px;
+               height: 30px;
+               font-size: 20px;
+               color: #727272
+               "
+               >공유 받은 '그룹 코드'를 등록해 주세요!</label>
+        <input type="text"
+               id="group_code"
+               name="group_code"
+               style="
+               position: absolute;
+               top: 350px;
+               width: 480px;
+               height: 30px;
+               "
+               required><br>
+        <button type="submit"
+                style="
+                position: absolute;
+                top: 400px;
+                width: 490px;
+                height: 40px;
+                background-color: #0333AF;
+                color: #ffffff;
+                font-size: 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;">코드 등록</button>
+    </form>
+</div>
+
+    <script>
+        $(document).ready(function() {
+            $('#join-group-form').on('submit', function(e) {
+                e.preventDefault();
+                const groupCode = $('#group_code').val();
+
+                $.ajax({
+                    url: '/group/join',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        group_code: groupCode
+                    }),
+                    success: function(response) {
+                        alert(response.message);
+                    },
+                    error: function() {
+                        alert('그룹 참가 중 오류가 발생했습니다.');
+                    }
+                });
+            });
+        });
+    </script>
+<style>
+
+    .resister-invitation2 {
+       position: absolute;
+       top: 25%;
+       left: 37%;
+       transform: translate(-50%, -50%)
+    }
+
+    .resister-invitation .text-wrapper-1 {
+       font-size: 70px;
+       font-family: "Hancom Bold", Helvetica;
+       position: absolute;
+       top: 25%;
+       left: 50%;
+       transform: translate(-50%, -50%)
+
+       }
+
+    .resister-invitation .text-wrapper-2 {
+       font-size: 20px;
+       font-family: "Hancom Bold", Helvetica;
+       position: absolute;
+       top: 40%;
+       left: 50%;
+       transform: translate(-50%, -50%)
+       }
+
+    .resister-invitation .text-wrapper-3 {
+       font-size: 20px;
+       font-family: "Hancom Bold", Helvetica;
+       position: absolute;
+       top: 45%;
+       left: 50%;
+       transform: translate(-50%, -50%)
+       }
+</style>
+</body>
+</html>

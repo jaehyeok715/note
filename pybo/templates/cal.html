@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    {% include "nav.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link href="{{ url_for('static', filename='cal.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<section class="cal">
+    <div class="cal-header">
+        <button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
+        <div class="year-month"></div>
+        <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
+        <button class="nav-btn go-today" onclick="goToday()">Today</button>
+    </div>
+    <div class="main">
+        <div class="days">
+            <div class="day">SUN</div>
+            <div class="day">MON</div>
+            <div class="day">TUE</div>
+            <div class="day">WED</div>
+            <div class="day">THU</div>
+            <div class="day">FRI</div>
+            <div class="day">SAT</div>
+        </div>
+        <div class="dates"></div>
+    </div>
+</section>
+<div class="DS">
+    <div class="container">
+        <div id="date" class="date"></div>
+    </div>
+    <div class="subtitle">
+        오늘의 일정
+    </div>
+    <div class="appendbox">
+        <form id="todo-form">
+            <input id="whattodo" type="text" placeholder="할 일을 작성하세요">
+            <input id="submitbtn" type="submit" value="추가하기">
+        </form>
+    </div>
+    <ul class="todo-box"></ul>
+</div>
+<script src="{{ url_for('static', filename='js/cal.js') }}"></script>
+</body>
+</html>

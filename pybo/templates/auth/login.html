@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <!-- 부트스트랩 CSS 라이브러리 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+{% include "nav.html" %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 login-container">
+            <!-- 로그인 제목 -->
+            <h2 class="text-center mb-4 login-title"><strong>로그인</strong></h2>
+            <form method="post" class="login-form">
+                {{ form.csrf_token }}
+                {% include "errors.html" %}
+                <!-- 아이디 입력 -->
+                <div class="form-group">
+                    <label for="username"><strong>아&nbsp;&nbsp이&nbsp;&nbsp디</strong> </label>
+                    <input type="text" class="form-control" name="username" id="username" value="{{ form.username.data or '' }}">
+                </div>
+                <!-- 비밀번호 입력 -->
+                <div class="form-group">
+                    <label for="password"><strong>비밀번호</strong> </label>
+                    <input type="password" class="form-control" name="password" id="password" value="{{ form.password.data or '' }}">
+                </div>
+                <!-- 로그인 버튼 -->
+                <button type="submit" class="btn btn-primary btn-block login-button"><strong>로그인</strong></button>
+            </form>
+            <!-- 회원가입 링크 -->
+            <p class="text-center mt-3 signup-link"><strong>계정이 없으신가요?</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/auth/signup"><strong>회원가입 하기</strong></a></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<style>
+        /* 로그인 컨테이너의 상단 여백 설정 */
+        .login-container {
+            margin-top: 150px;
+        }
+
+        /* 로그인 폼 스타일 설정 */
+        .login-form {
+            max-width: 300px; /* 최대 폭 설정 */
+            margin: 0 auto; /* 가운데 정렬 */
+            display: flex; /* Flexbox 사용 */
+            flex-direction: column; /* 세로 방향으로 배치 */
+            align-items: center; /* 가운데 정렬 */
+        }
+
+        /* 폼 그룹 스타일 설정 */
+        .form-group {
+        width: 100%; /* 폼 그룹 너비를 100%로 설정하여 한 줄에 표시 */
+        margin-bottom: 15px; /* 입력란 사이 간격 조정 */
+        display: flex; /* Flexbox 사용 */
+        flex-direction: row; /* 가로 방향으로 배치 */
+        align-items: center; /* 수직 가운데 정렬 */
+        }
+
+        .form-group label {
+        margin-right: -15px; /* 라벨과 입력란 사이 간격 설정 */
+        width: 30%; /* 라벨의 너비를 30%로 설정 */
+        min-width: 90px; /* 라벨의 최소 너비 설정 */
+        text-align: left; /* 라벨 텍스트 왼쪽 정렬 */
+        }
+
+        .login-form .form-control {
+        flex: 1; /* 입력란을 가능한 넓게 확장 */
+        text-align: left; /* 입력란 텍스트 왼쪽 정렬 */
+        }
+        .login-button {
+        color: #FFF; /* 텍스트 색상을 흰색으로 설정 */
+        background-color: #0333AF; /* 배경 색상을 파란색으로 설정 */
+        border-color: #0333AF; /* 테두리 색상도 파란색으로 설정 */
+        }
+
+        /* 로그인 버튼에 호버 효과 추가 */
+        .login-button:hover {
+        background-color: #002080; /* 배경 색상을 더 진한 파란색으로 변경 */
+        border-color: #002080; /* 테두리 색상도 변경 */
+        }
+
+        .signup-link a {
+        color: #0333AF; /* 링크 텍스트 색상을 파란색으로 설정 */
+        }
+
+        /* 링크에 호버 효과 추가 */
+        .signup-link a:hover {
+        color: #002080; /* 호버 시 더 진한 파란색으로 변경 */
+        }
+</style>

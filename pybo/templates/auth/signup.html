@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    {% include "nav.html" %}
+    <div class="container">
+        <form method="post" action="{{ url_for('auth.signup') }}">
+            {{ form.csrf_token }}
+            {% include "errors.html" %}
+            <div class="row justify-content-center">
+                <div class="col-md-6 login-container">
+                    <h2 class="text-center mb-4"><strong>회원가입</strong></h2>
+                    <div class="login-form">
+                        <div class="form-group">
+                            <label for="username"><strong>아&nbsp;&nbsp&nbsp&nbsp&nbsp&nbsp이&nbsp;&nbsp&nbsp&nbsp&nbsp&nbsp디</strong></label>
+                            {{ form.username(class="form-control", autocomplete="username") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="password1"><strong>비&nbsp;&nbsp&nbsp밀&nbsp;&nbsp번&nbsp;&nbsp&nbsp호</strong></label>
+                            {{ form.password1(class="form-control", autocomplete="new-password") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="password2"><strong>비밀번호 확인</strong></label>
+                            {{ form.password2(class="form-control", autocomplete="new-password") }}
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><strong>이&nbsp;&nbsp&nbsp&nbsp&nbsp&nbsp메&nbsp;&nbsp&nbsp&nbsp&nbsp&nbsp일</strong></label>
+                            {{ form.email(class="form-control", autocomplete="email") }}
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block"><strong>다음 단계</strong></button>
+                    </div>
+                    </form>
+            <!-- 회원가입 링크 -->
+            <p class="text-center mt-3 signup-link"><strong>이미 계정이 있으신가요?</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/auth/signup"><strong>로그인 하기</strong></a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+<style>
+        /* 로그인 컨테이너의 상단 여백 설정 */
+        .login-container {
+            margin-top: 150px;
+        }
+
+        /* 로그인 폼 스타일 설정 */
+        .login-form {
+            max-width: 300px; /* 최대 폭 설정 */
+            margin: 0 auto; /* 가운데 정렬 */
+            display: flex; /* Flexbox 사용 */
+            flex-direction: column; /* 세로 방향으로 배치 */
+            align-items: center; /* 가운데 정렬 */
+            line-height: 1; /* 줄 간격 설정 */
+        }
+        /* 폼 그룹 스타일 설정 */
+        .form-group {
+            width: 100%; /* 폼 그룹 너비를 100%로 설정하여 한 줄에 표시 */
+            margin-bottom: 15px; /* 입력란 사이 간격 조정 */
+            display: flex; /* Flexbox 사용 */
+            flex-direction: row; /* 가로 방향으로 배치 */
+            align-items: center; /* 수직 가운데 정렬 */
+        }
+
+        /* 라벨 스타일 설정 */
+        .form-group label {
+            margin-right: 10px; /* 라벨과 입력란 사이 간격 설정 */
+            white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+        }
+
+        /* 입력란 크기 동일하게 조정 */
+        .login-form .form-control {
+            flex: 1; /* 입력란을 가능한 넓게 확장 */
+        }
+
+        .signup-link a {
+        color: #0333AF; /* 링크 텍스트 색상을 파란색으로 설정 */
+        }
+
+        /* 다음 단계 버튼 색상 설정 */
+        .btn-primary {
+        background-color: #0333AF; /* 배경 색상을 새로운 색상으로 변경 */
+        border-color: #0333AF; /* 테두리 색상도 변경 */
+        }
+
+        /* 다음 단계 버튼 호버 효과 추가 */
+        .btn-primary:hover {
+        background-color: #0333AF; /* 호버 시 더 진한 색상으로 변경 */
+        border-color: #0333AF; /* 테두리 색상도 변경 */
+        }
+
+
+</style>

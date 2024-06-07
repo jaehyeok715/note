@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    {% include "nav.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그룹 생성</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="resister-invitation">
+
+    <div class="text-wrapper-1">그룹 코드란?</div>
+
+        <p class="text-wrapper-2">We.Note에서는 그룹 구성원 간 동일한 코드를 공유해 그룹을 생성합니다.</p>
+
+        <p class="text-wrapper-3">그룹 생성을 위해서는 그룹 생성자가 그룹명과 코드를 등록해야 합니다.</p>
+
+        <p class="text-wrapper-4">그룹 생성 후, 그룹 코드를 그룹 구성원에게 공유해주세요.</p>
+
+        <p class="text-wrapper-5">'그룹 코드 등록'탭에서 코드를 등록하면, 그룹 캘린더를 통해 일정을 공유할 수 있습니다.</p>
+      </div>
+  <div class="resister-invitation2">
+    <form id="create-group-form">
+        <label for="group_name"
+               style="
+               position: absolute;
+               top: 180px;
+               width: 400px;
+               height: 30px;
+               font-size: 20px;
+               color: #727272
+               "
+               >'그룹 이름'을 작성해 주세요!</label>
+        <input type="text" id="group_name"
+               name="group_name"
+               style="
+               position: absolute;
+               top: 230px;
+               width: 400px;
+               height: 30px;"
+               required><br>
+        <label for="group_code"
+               style="
+               position: absolute;
+               top: 290px;
+               width: 400px;
+               height: 30px;
+               font-size: 20px;
+               color: #727272"
+               >'그룹 코드'를 등록해 주세요!</label>
+        <input type="text"
+               id="group_code"
+               name="group_code"
+               style="
+               position: absolute;
+               top: 330px;
+               width: 400px;
+               height: 30px;"
+               required><br>
+        <button type="submit"
+                style="
+                position: absolute;
+                top: 380px;
+                width: 410px;
+                height: 40px;
+                background-color: #0333AF;
+                color: #ffffff;
+                font-size: 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                ">그룹 생성</button>
+    </form>
+      </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#create-group-form').on('submit', function(e) {
+                e.preventDefault();
+                const groupName = $('#group_name').val();
+                const groupCode = $('#group_code').val();
+
+                $.ajax({
+                    url: '/group/create',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        group_name: groupName,
+                        group_code: groupCode
+                    }),
+                    success: function(response) {
+                        alert(response.message);
+                    },
+                    error: function() {
+                        alert('그룹 생성 중 오류가 발생했습니다.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+<style>
+
+    .resister-invitation2 {
+       position: absolute;
+       top: 35%;
+       left: 40%;
+       transform: translate(-50%, -50%)
+    }
+
+    .resister-invitation .text-wrapper-1 {
+       font-size: 70px;
+       font-family: "Hancom-Gothic", Helvetica;
+       position: absolute;
+       top: 15%;
+       left: 50%;
+       transform: translate(-50%, -50%)
+
+       }
+
+    .resister-invitation .text-wrapper-2 {
+       font-size: 20px;
+       font-family: "Hancom Gothic-Bold", Helvetica;
+       position: absolute;
+       top: 25%;
+       left: 50%;
+       transform: translate(-50%, -50%)
+       }
+
+    .resister-invitation .text-wrapper-3 {
+       font-size: 20px;
+       font-family: "Hancom Gothic-Bold", Helvetica;
+       position: absolute;
+       top: 30%;
+       left: 50%;
+       transform: translate(-50%, -50%)
+       }
+
+    .resister-invitation .text-wrapper-4 {
+       font-size: 20px;
+       font-family: "Hancom Gothic-Bold", Helvetica;
+       position: absolute;
+       top: 35%;
+       left: 50%;
+       transform: translate(-50%, -50%)
+       }
+
+    .resister-invitation .text-wrapper-5 {
+       font-size: 20px;
+       font-family: "Hancom Gothic-Bold", Helvetica;
+       position: absolute;
+       top: 40%;
+       left: 50%;
+       transform: translate(-50%, -50%)
+       }
+
+
+</style>

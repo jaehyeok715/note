@@ -1,0 +1,44 @@
+/*헤더(상단바) 전체 스타일*/
+.header {
+    width: 100%;
+    height: 8%;
+    position: fixed;
+    background-color: #d9d9d980;
+    display: flex; /* 각 카테고리가 수평으로 나열되게 하는 css*/
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Hancom Gothic-Bold", Helvetica;
+    color: #000000;
+    text-align: left;
+    font-weight: 700;
+    padding: 0 20px;
+}
+
+/*헤더 내부 링크달린 네비바 css*/
+.header nav {
+    display: flex; /* nav 안의 요소들을 가로로 나열하기 위해 */
+    font-family: "Hancom Gothic-Bold", Helvetica;
+    color: #000000;
+    text-align: center;
+        }
+
+/*네비바 각 요소*/
+.header nav a {
+    margin-right: 20px; /* 각 카테고리(링크)들 사이의 간격 조정 */
+        }
+
+/*We.Note(navbar-brand) css*/
+.header navbar-brand {
+    position: fixed;
+    width: 516px;
+    height: 54px;
+    top: 30px;
+    left: 0;
+    font-family: "Hancom Gothic-Bold", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: -0.12px;
+    line-height: 16px;
+}

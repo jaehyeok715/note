@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>We.Note</title>
+  <link rel="stylesheet" href="globals.css">
+  {% include "nav.html" %}
+
+</head>
+
+<body>
+
+  <div class="we-note-main">
+    <div class="div">
+      <div class="text-wrapper">We.Note</div>
+      <p class="we-note">
+        배재 We.Note로<br /><br /><br /><br />쉽고, 편하게<br /><br /><br /><br />학교 일정 관리하기
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
+
+<style>
+  .we-note-main {
+  justify-content: center;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.we-note-main .div {
+  position: fixed;
+}
+
+.we-note-main .text-wrapper {
+  position: fixed;
+  top: 250px;
+  left: 40%;
+  font-family: "Hancom Gothic-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 75px;
+  text-align: center;
+  letter-spacing: -0.12px;
+  line-height: 16px;
+}
+
+.we-note-main .we-note {
+  position: fixed;
+  top: 42%;
+  left: 38%;
+  font-family: "Hancom Gothic-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 45px;
+  text-align: center;
+  letter-spacing: -0.12px;
+  line-height: 16px;
+}
+</style>
+
